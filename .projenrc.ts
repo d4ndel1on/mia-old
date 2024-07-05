@@ -12,6 +12,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   license: 'MIT',
   keywords: ['cognito', 'lambda', 'api-gateway', 'dynamodb'],
   description: 'Construct to integrate user management into a project',
-  packageName: '@d4ndel1on/mia',
+  packageName: 'cdk-mia',
 });
 project.synth();
