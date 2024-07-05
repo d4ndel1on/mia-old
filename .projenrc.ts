@@ -6,7 +6,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   cdkVersion: '2.147.3',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.4.0',
-  name: 'mia',
+  name: '@d4ndel1on/mia',
   projenrcTs: true,
   repositoryUrl: 'https://github.com/d4ndel1on/mia.git',
   license: 'MIT',
