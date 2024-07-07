@@ -1,5 +1,5 @@
 {
-  "name": "cdk-mia",
+  "name": "@mia/core",
   "description": "Construct to integrate user management into a project",
   "repository": {
     "type": "git",
@@ -70,9 +70,6 @@
   ],
   "main": "lib/index.js",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "version": "0.0.0",
   "jest": {
     "coverageProvider": "v8",
