@@ -5,7 +5,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   author: 'd4ndel1on',
   authorName: 'Stefan',
   authorAddress: 'stefan@fancynetwork.net',
-  cdkVersion: '2.147.3',
+  cdkVersion: '2.149.0',
   defaultReleaseBranch: 'main',
   jsiiVersion: '~5.4.0',
   name: 'mia',
@@ -14,7 +14,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   license: 'MIT',
   keywords: ['cognito', 'lambda', 'api-gateway', 'dynamodb'],
   description: 'Construct to integrate user management into a project',
-  packageName: '@mia/core',
+  packageName: '@h0pe/mia',
   npmAccess: NpmAccess.PUBLIC,
 });
 project.synth();

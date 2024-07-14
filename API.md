@@ -4,12 +4,12 @@
 
 ## Classes <a name="Classes" id="Classes"></a>
 
-### Hello <a name="Hello" id="@mia/core.Hello"></a>
+### Hello <a name="Hello" id="@h0pe/mia.Hello"></a>
 
-#### Initializers <a name="Initializers" id="@mia/core.Hello.Initializer"></a>
+#### Initializers <a name="Initializers" id="@h0pe/mia.Hello.Initializer"></a>
 
 ```typescript
-import { Hello } from '@mia/core'
+import { Hello } from '@h0pe/mia'
 
 new Hello()
 ```
@@ -23,11 +23,11 @@ new Hello()
 
 | **Name** | **Description** |
 | --- | --- |
-| <code><a href="#@mia/core.Hello.sayHello">sayHello</a></code> | *No description.* |
+| <code><a href="#@h0pe/mia.Hello.sayHello">sayHello</a></code> | *No description.* |
 
 ---
 
-##### `sayHello` <a name="sayHello" id="@mia/core.Hello.sayHello"></a>
+##### `sayHello` <a name="sayHello" id="@h0pe/mia.Hello.sayHello"></a>
 
 ```typescript
 public sayHello(): string
