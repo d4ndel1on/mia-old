@@ -1,5 +1,5 @@
-import { awscdk } from 'projen';
-import { NpmAccess } from 'projen/lib/javascript';
+import { awscdk } from 'projen'
+import { NpmAccess } from 'projen/lib/javascript'
 
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'd4ndel1on',
@@ -10,11 +10,36 @@ const project = new awscdk.AwsCdkConstructLibrary({
   jsiiVersion: '~5.4.0',
   name: 'mia',
   projenrcTs: true,
+  typescriptVersion: 'latest',
   repositoryUrl: 'https://github.com/d4ndel1on/mia.git',
   license: 'MIT',
   keywords: ['cognito', 'lambda', 'api-gateway', 'dynamodb'],
-  description: 'Construct to integrate user management into a project',
+  description: 'AWS CDK construct to integrate user management into a project',
   packageName: '@h0pe/mia',
   npmAccess: NpmAccess.PUBLIC,
-});
-project.synth();
+  bundledDeps: [
+    '@aws-lambda-powertools/logger',
+    '@aws-sdk/client-cognito-identity-provider',
+    '@aws-sdk/util-dynamodb',
+    '@aws-sdk/client-dynamodb',
+    '@types/aws-lambda',
+    'aws-lambda',
+    'esbuild',
+  ],
+  deps: [
+    '@aws-cdk/aws-cognito-identitypool-alpha',
+    'esbuild',
+    'aws-lambda',
+    '@types/aws-lambda',
+    '@aws-lambda-powertools/logger',
+    '@aws-sdk/util-dynamodb',
+    '@aws-sdk/client-dynamodb',
+    '@aws-sdk/client-cognito-identity-provider',
+  ],
+})
+project.eslint?.addRules({
+  '@typescript-eslint/no-floating-promises': 'error',
+  'semi': ['error', 'never'],
+  'comma-dangle': ['error', 'always-multiline'],
+})
+project.synth()

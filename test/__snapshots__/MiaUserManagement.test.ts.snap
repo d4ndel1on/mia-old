@@ -1,0 +1,1040 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default 1`] = `
+{
+  "Mappings": {
+    "AWSCloudFrontPartitionHostedZoneIdMap": {
+      "aws": {
+        "zoneId": "Z2FDTNDATAQYW2",
+      },
+      "aws-cn": {
+        "zoneId": "Z3RFFRIM2A3IF5",
+      },
+    },
+    "LatestNodeRuntimeMap": {
+      "af-south-1": {
+        "value": "nodejs20.x",
+      },
+      "ap-east-1": {
+        "value": "nodejs20.x",
+      },
+      "ap-northeast-1": {
+        "value": "nodejs20.x",
+      },
+      "ap-northeast-2": {
+        "value": "nodejs20.x",
+      },
+      "ap-northeast-3": {
+        "value": "nodejs20.x",
+      },
+      "ap-south-1": {
+        "value": "nodejs20.x",
+      },
+      "ap-south-2": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-1": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-2": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-3": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-4": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-5": {
+        "value": "nodejs20.x",
+      },
+      "ap-southeast-7": {
+        "value": "nodejs20.x",
+      },
+      "ca-central-1": {
+        "value": "nodejs20.x",
+      },
+      "ca-west-1": {
+        "value": "nodejs20.x",
+      },
+      "cn-north-1": {
+        "value": "nodejs18.x",
+      },
+      "cn-northwest-1": {
+        "value": "nodejs18.x",
+      },
+      "eu-central-1": {
+        "value": "nodejs20.x",
+      },
+      "eu-central-2": {
+        "value": "nodejs20.x",
+      },
+      "eu-isoe-west-1": {
+        "value": "nodejs18.x",
+      },
+      "eu-north-1": {
+        "value": "nodejs20.x",
+      },
+      "eu-south-1": {
+        "value": "nodejs20.x",
+      },
+      "eu-south-2": {
+        "value": "nodejs20.x",
+      },
+      "eu-west-1": {
+        "value": "nodejs20.x",
+      },
+      "eu-west-2": {
+        "value": "nodejs20.x",
+      },
+      "eu-west-3": {
+        "value": "nodejs20.x",
+      },
+      "il-central-1": {
+        "value": "nodejs20.x",
+      },
+      "me-central-1": {
+        "value": "nodejs20.x",
+      },
+      "me-south-1": {
+        "value": "nodejs20.x",
+      },
+      "mx-central-1": {
+        "value": "nodejs20.x",
+      },
+      "sa-east-1": {
+        "value": "nodejs20.x",
+      },
+      "us-east-1": {
+        "value": "nodejs20.x",
+      },
+      "us-east-2": {
+        "value": "nodejs20.x",
+      },
+      "us-gov-east-1": {
+        "value": "nodejs18.x",
+      },
+      "us-gov-west-1": {
+        "value": "nodejs18.x",
+      },
+      "us-iso-east-1": {
+        "value": "nodejs18.x",
+      },
+      "us-iso-west-1": {
+        "value": "nodejs18.x",
+      },
+      "us-isob-east-1": {
+        "value": "nodejs18.x",
+      },
+      "us-west-1": {
+        "value": "nodejs20.x",
+      },
+      "us-west-2": {
+        "value": "nodejs20.x",
+      },
+    },
+  },
+  "Outputs": {
+    "MiaUserManagementCognitoAppClientId": {
+      "Export": {
+        "Name": "MiaUserManagementCognitoAppClient:Id",
+      },
+      "Value": {
+        "Ref": "UserPoolWebClientD5EC4BD0",
+      },
+    },
+    "MiaUserManagementCognitoIdentityPoolId": {
+      "Export": {
+        "Name": "MiaUserManagement:CognitoIdentityPool:Id",
+      },
+      "Value": {
+        "Ref": "IdentityPoolEC8A1A0D",
+      },
+    },
+    "MiaUserManagementMiaUserManagementCognitoUserPool": {
+      "Export": {
+        "Name": "MiaUserManagement:MiaUserManagement:CognitoUserPool:Id",
+      },
+      "Value": {
+        "Ref": "MiaUserManagementUserPool3A80F3DA",
+      },
+    },
+    "MiaUserManagementMyAdminUserGroupCognitoUserGroup": {
+      "Export": {
+        "Name": "MiaUserManagement:MyAdminUserGroup:CognitoUserGroup:User:Name",
+      },
+      "Value": "admin",
+    },
+    "MiaUserManagementMyCustomDomainAuthorizedRedirectUserPoolDomainUrl": {
+      "Export": {
+        "Name": "MiaUserManagement:MyCustomDomain:AuthorizedRedirectUserPoolDomainUrl",
+      },
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+            },
+            "/oauth2/idpresponse",
+          ],
+        ],
+      },
+    },
+    "MiaUserManagementMyCustomDomainCognitoDomainHost": {
+      "Export": {
+        "Name": "MiaUserManagement:MyCustomDomain:CognitoDomainHost",
+      },
+      "Value": {
+        "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+      },
+    },
+    "MiaUserManagementMyDefaultUserGroupCognitoUserGroup": {
+      "Export": {
+        "Name": "MiaUserManagement:MyDefaultUserGroup:CognitoUserGroup:User:Name",
+      },
+      "Value": "default",
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": {
+      "DependsOn": [
+        "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "97f30e67419a1676a2215492723e5add1aa491caf0cbe2dd878fc4fab0468cd4.zip",
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+            "Arn",
+          ],
+        },
+        "Runtime": {
+          "Fn::FindInMap": [
+            "LatestNodeRuntimeMap",
+            {
+              "Ref": "AWS::Region",
+            },
+            "value",
+          ],
+        },
+        "Timeout": 120,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "IdentityPoolAuthenticatedRole42131CF5": {
+      "DependsOn": [
+        "MiaUserManagementUserPoolPostConfirmationCognito64E7E6DD",
+        "MiaUserManagementUserPool3A80F3DA",
+        "UserPoolWebClientD5EC4BD0",
+      ],
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRoleWithWebIdentity",
+              "Condition": {
+                "ForAnyValue:StringLike": {
+                  "cognito-identity.amazonaws.com:amr": "authenticated",
+                },
+                "StringEquals": {
+                  "cognito-identity.amazonaws.com:aud": {
+                    "Ref": "IdentityPoolEC8A1A0D",
+                  },
+                },
+              },
+              "Effect": "Allow",
+              "Principal": {
+                "Federated": "cognito-identity.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Description": {
+          "Fn::Join": [
+            "",
+            [
+              "Default Authenticated Role for Identity Pool ",
+              {
+                "Fn::GetAtt": [
+                  "IdentityPoolEC8A1A0D",
+                  "Name",
+                ],
+              },
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "IdentityPoolDefaultRoleAttachmentD81AFC39": {
+      "DependsOn": [
+        "MiaUserManagementUserPoolPostConfirmationCognito64E7E6DD",
+        "MiaUserManagementUserPool3A80F3DA",
+        "UserPoolWebClientD5EC4BD0",
+      ],
+      "Properties": {
+        "IdentityPoolId": {
+          "Ref": "IdentityPoolEC8A1A0D",
+        },
+        "Roles": {
+          "authenticated": {
+            "Fn::GetAtt": [
+              "IdentityPoolAuthenticatedRole42131CF5",
+              "Arn",
+            ],
+          },
+          "unauthenticated": {
+            "Fn::GetAtt": [
+              "IdentityPoolUnauthenticatedRole68AEFF8B",
+              "Arn",
+            ],
+          },
+        },
+      },
+      "Type": "AWS::Cognito::IdentityPoolRoleAttachment",
+    },
+    "IdentityPoolEC8A1A0D": {
+      "DependsOn": [
+        "MiaUserManagementUserPoolPostConfirmationCognito64E7E6DD",
+        "MiaUserManagementUserPool3A80F3DA",
+        "UserPoolWebClientD5EC4BD0",
+      ],
+      "Properties": {
+        "AllowUnauthenticatedIdentities": true,
+        "CognitoIdentityProviders": [
+          {
+            "ClientId": {
+              "Ref": "UserPoolWebClientD5EC4BD0",
+            },
+            "ProviderName": {
+              "Fn::Join": [
+                "",
+                [
+                  "cognito-idp.",
+                  {
+                    "Ref": "AWS::Region",
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix",
+                  },
+                  "/",
+                  {
+                    "Ref": "MiaUserManagementUserPool3A80F3DA",
+                  },
+                ],
+              ],
+            },
+            "ServerSideTokenCheck": true,
+          },
+        ],
+      },
+      "Type": "AWS::Cognito::IdentityPool",
+    },
+    "IdentityPoolUnauthenticatedRole68AEFF8B": {
+      "DependsOn": [
+        "MiaUserManagementUserPoolPostConfirmationCognito64E7E6DD",
+        "MiaUserManagementUserPool3A80F3DA",
+        "UserPoolWebClientD5EC4BD0",
+      ],
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRoleWithWebIdentity",
+              "Condition": {
+                "ForAnyValue:StringLike": {
+                  "cognito-identity.amazonaws.com:amr": "unauthenticated",
+                },
+                "StringEquals": {
+                  "cognito-identity.amazonaws.com:aud": {
+                    "Ref": "IdentityPoolEC8A1A0D",
+                  },
+                },
+              },
+              "Effect": "Allow",
+              "Principal": {
+                "Federated": "cognito-identity.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Description": {
+          "Fn::Join": [
+            "",
+            [
+              "Default Unauthenticated Role for Identity Pool ",
+              {
+                "Fn::GetAtt": [
+                  "IdentityPoolEC8A1A0D",
+                  "Name",
+                ],
+              },
+            ],
+          ],
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A": {
+      "DependsOn": [
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "4e26bf2d0a26f2097fb2b261f22bb51e3f6b4b52635777b1e54edbd8e2d58c35.zip",
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+            "Arn",
+          ],
+        },
+        "Runtime": {
+          "Fn::FindInMap": [
+            "LatestNodeRuntimeMap",
+            {
+              "Ref": "AWS::Region",
+            },
+            "value",
+          ],
+        },
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "logs:PutRetentionPolicy",
+                "logs:DeleteRetentionPolicy",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRoleDefaultPolicyADDA7DEB",
+        "Roles": [
+          {
+            "Ref": "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aServiceRole9741ECFB",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "MiaUserManagementGroupUserMyAdminUserGroup": {
+      "Properties": {
+        "Description": "MiaUserManagement user group admin",
+        "GroupName": "admin",
+        "UserPoolId": {
+          "Ref": "MiaUserManagementUserPool3A80F3DA",
+        },
+      },
+      "Type": "AWS::Cognito::UserPoolGroup",
+    },
+    "MiaUserManagementGroupUserMyDefaultUserGroup": {
+      "Properties": {
+        "Description": "MiaUserManagement user group default",
+        "GroupName": "default",
+        "UserPoolId": {
+          "Ref": "MiaUserManagementUserPool3A80F3DA",
+        },
+      },
+      "Type": "AWS::Cognito::UserPoolGroup",
+    },
+    "MiaUserManagementPostConfirmationLambdaInlinePolicyCCBBCF22": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "cognito-idp:AdminAddUserToGroup",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":cognito-identity:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":identitypool/",
+                    {
+                      "Ref": "IdentityPoolEC8A1A0D",
+                    },
+                  ],
+                ],
+              },
+              "Sid": "AllowCognitoGroupAdmin",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "MiaUserManagementPostConfirmationLambdaInlinePolicyCCBBCF22",
+        "Roles": [
+          {
+            "Ref": "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleA8BF2D11",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaF6BD2FC8": {
+      "DependsOn": [
+        "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleDefaultPolicy37EA8AFA",
+        "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleA8BF2D11",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "136223b085a237d39d93fab44a04ac93174ebdc562086f6d26f6982e8c272bbc.zip",
+        },
+        "Description": "Cognito post confirmation lambda for MiaUserManagement MyPostConfirmationLambda",
+        "Environment": {
+          "Variables": {
+            "DATA_TABLE_NAME": "tableName",
+          },
+        },
+        "Handler": "index.handler",
+        "MemorySize": 128,
+        "Role": {
+          "Fn::GetAtt": [
+            "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleA8BF2D11",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 5,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaLogRetention84D5F846": {
+      "Properties": {
+        "LogGroupName": {
+          "Fn::Join": [
+            "",
+            [
+              "/aws/lambda/",
+              {
+                "Ref": "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaF6BD2FC8",
+              },
+            ],
+          ],
+        },
+        "RetentionInDays": 14,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::LogRetention",
+    },
+    "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleA8BF2D11": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleDefaultPolicy37EA8AFA": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":dynamodb:",
+                    {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":table/tableName",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleDefaultPolicy37EA8AFA",
+        "Roles": [
+          {
+            "Ref": "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleA8BF2D11",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "MiaUserManagementUserPool3A80F3DA": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AccountRecoverySetting": {
+          "RecoveryMechanisms": [
+            {
+              "Name": "verified_phone_number",
+              "Priority": 1,
+            },
+            {
+              "Name": "verified_email",
+              "Priority": 2,
+            },
+          ],
+        },
+        "AdminCreateUserConfig": {
+          "AllowAdminCreateUserOnly": false,
+        },
+        "AutoVerifiedAttributes": [
+          "email",
+        ],
+        "EmailVerificationMessage": "The verification code to your new account is {####}",
+        "EmailVerificationSubject": "Verify your new account",
+        "LambdaConfig": {
+          "PostConfirmation": {
+            "Fn::GetAtt": [
+              "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaF6BD2FC8",
+              "Arn",
+            ],
+          },
+        },
+        "Policies": {
+          "PasswordPolicy": {
+            "MinimumLength": 9,
+            "RequireLowercase": true,
+            "RequireNumbers": true,
+            "RequireSymbols": true,
+            "RequireUppercase": true,
+          },
+        },
+        "Schema": [
+          {
+            "Mutable": true,
+            "Name": "email",
+            "Required": true,
+          },
+          {
+            "Mutable": true,
+            "Name": "nickname",
+            "Required": true,
+          },
+          {
+            "Mutable": true,
+            "Name": "picture",
+            "Required": true,
+          },
+          {
+            "AttributeDataType": "String",
+            "Mutable": false,
+            "Name": "id",
+            "StringAttributeConstraints": {
+              "MaxLength": "32",
+              "MinLength": "22",
+            },
+          },
+        ],
+        "SmsVerificationMessage": "The verification code to your new account is {####}",
+        "UsernameAttributes": [
+          "email",
+        ],
+        "UsernameConfiguration": {
+          "CaseSensitive": false,
+        },
+        "VerificationMessageTemplate": {
+          "DefaultEmailOption": "CONFIRM_WITH_CODE",
+          "EmailMessage": "The verification code to your new account is {####}",
+          "EmailSubject": "Verify your new account",
+          "SmsMessage": "The verification code to your new account is {####}",
+        },
+      },
+      "Type": "AWS::Cognito::UserPool",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "MiaUserManagementUserPoolDomainARecordMyCustomDomainE0C09ABE": {
+      "Properties": {
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "MiaUserManagementUserPoolDomainMyCustomDomainCloudFrontDomainName41730878",
+              "DomainDescription.CloudFrontDistribution",
+            ],
+          },
+          "HostedZoneId": {
+            "Fn::FindInMap": [
+              "AWSCloudFrontPartitionHostedZoneIdMap",
+              {
+                "Ref": "AWS::Partition",
+              },
+              "zoneId",
+            ],
+          },
+        },
+        "HostedZoneId": "my-hosted-zone-id",
+        "Name": "auth.mia.h0pe.example.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
+    "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A": {
+      "Properties": {
+        "CustomDomainConfig": {
+          "CertificateArn": "arn:certificate:1",
+        },
+        "Domain": "auth.mia.h0pe.example",
+        "UserPoolId": {
+          "Ref": "MiaUserManagementUserPool3A80F3DA",
+        },
+      },
+      "Type": "AWS::Cognito::UserPoolDomain",
+    },
+    "MiaUserManagementUserPoolDomainMyCustomDomainCloudFrontDomainName41730878": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "MiaUserManagementUserPoolDomainMyCustomDomainCloudFrontDomainNameCustomResourcePolicy6A12FBB1",
+      ],
+      "Properties": {
+        "Create": {
+          "Fn::Join": [
+            "",
+            [
+              "{"service":"CognitoIdentityServiceProvider","action":"describeUserPoolDomain","parameters":{"Domain":"",
+              {
+                "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+              },
+              ""},"physicalResourceId":{"id":"",
+              {
+                "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+              },
+              ""}}",
+            ],
+          ],
+        },
+        "InstallLatestAwsSdk": false,
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+        "Update": {
+          "Fn::Join": [
+            "",
+            [
+              "{"service":"CognitoIdentityServiceProvider","action":"describeUserPoolDomain","parameters":{"Domain":"",
+              {
+                "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+              },
+              ""},"physicalResourceId":{"id":"",
+              {
+                "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+              },
+              ""}}",
+            ],
+          ],
+        },
+      },
+      "Type": "Custom::UserPoolCloudFrontDomainName",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "MiaUserManagementUserPoolDomainMyCustomDomainCloudFrontDomainNameCustomResourcePolicy6A12FBB1": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": "cognito-idp:DescribeUserPoolDomain",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "MiaUserManagementUserPoolDomainMyCustomDomainCloudFrontDomainNameCustomResourcePolicy6A12FBB1",
+        "Roles": [
+          {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "MiaUserManagementUserPoolIdentityProviderApple70BE015F": {
+      "Properties": {
+        "AttributeMapping": {
+          "email": "email",
+          "nickname": "name",
+        },
+        "ProviderDetails": {
+          "authorize_scopes": "openid profile email",
+          "client_id": "my-apple-client-id",
+          "key_id": "{{resolve:secretsmanager:arn:secret:test:apple:my:secret:keyId:SecretString:::}}",
+          "private_key": "{{resolve:secretsmanager:arn:secret:test:apple:my:secret:privateKey:SecretString:::}}",
+          "team_id": "secret-team-id",
+        },
+        "ProviderName": "SignInWithApple",
+        "ProviderType": "SignInWithApple",
+        "UserPoolId": {
+          "Ref": "MiaUserManagementUserPool3A80F3DA",
+        },
+      },
+      "Type": "AWS::Cognito::UserPoolIdentityProvider",
+    },
+    "MiaUserManagementUserPoolIdentityProviderGoogleBD96DB48": {
+      "Properties": {
+        "AttributeMapping": {
+          "email": "email",
+          "family_name": "family_name",
+          "given_name": "given_name",
+          "picture": "picture",
+        },
+        "ProviderDetails": {
+          "authorize_scopes": "openid profile email",
+          "client_id": "my-google-client-id",
+        },
+        "ProviderName": "Google",
+        "ProviderType": "Google",
+        "UserPoolId": {
+          "Ref": "MiaUserManagementUserPool3A80F3DA",
+        },
+      },
+      "Type": "AWS::Cognito::UserPoolIdentityProvider",
+    },
+    "MiaUserManagementUserPoolPostConfirmationCognito64E7E6DD": {
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaF6BD2FC8",
+            "Arn",
+          ],
+        },
+        "Principal": "cognito-idp.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "MiaUserManagementUserPool3A80F3DA",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "UserPoolWebClientD5EC4BD0": {
+      "DependsOn": [
+        "MiaUserManagementUserPoolIdentityProviderApple70BE015F",
+        "MiaUserManagementUserPoolIdentityProviderGoogleBD96DB48",
+      ],
+      "Properties": {
+        "AccessTokenValidity": 60,
+        "AllowedOAuthFlows": [
+          "code",
+        ],
+        "AllowedOAuthFlowsUserPoolClient": true,
+        "AllowedOAuthScopes": [
+          "profile",
+          "phone",
+          "email",
+          "openid",
+          "aws.cognito.signin.user.admin",
+        ],
+        "CallbackURLs": [
+          "https://callback.google.example",
+          "https://callback.apple.example",
+        ],
+        "GenerateSecret": false,
+        "IdTokenValidity": 60,
+        "LogoutURLs": [
+          "http://logout.google.example",
+          "http://logout.apple.example",
+        ],
+        "SupportedIdentityProviders": [
+          "Google",
+          "SignInWithApple",
+        ],
+        "TokenValidityUnits": {
+          "AccessToken": "minutes",
+          "IdToken": "minutes",
+        },
+        "UserPoolId": {
+          "Ref": "MiaUserManagementUserPool3A80F3DA",
+        },
+      },
+      "Type": "AWS::Cognito::UserPoolClient",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;

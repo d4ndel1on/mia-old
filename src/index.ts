@@ -1,5 +1,3 @@
-export class Hello {
-  public sayHello() {
-    return 'hello, stefan!';
-  }
-}
+import { MiaUserManagement } from './MiaUserManagement'
+
+export default MiaUserManagement
