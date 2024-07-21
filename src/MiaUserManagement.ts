@@ -1,6 +1,6 @@
 import * as path from 'path'
 import { IdentityPool, UserPoolAuthenticationProvider } from '@aws-cdk/aws-cognito-identitypool-alpha'
-import { CfnOutput, Duration } from 'aws-cdk-lib'
+import { CfnOutput, Duration, RemovalPolicy } from 'aws-cdk-lib'
 import { Certificate } from 'aws-cdk-lib/aws-certificatemanager'
 import {
   CfnUserPoolGroup,
@@ -16,7 +16,7 @@ import {
   VerificationEmailStyle,
 } from 'aws-cdk-lib/aws-cognito'
 import { UserPoolIdentityProviderBase } from 'aws-cdk-lib/aws-cognito/lib/user-pool-idps/private/user-pool-idp-base'
-import { TableV2 } from 'aws-cdk-lib/aws-dynamodb'
+import { AttributeType, Billing, TableEncryptionV2, TableV2 } from 'aws-cdk-lib/aws-dynamodb'
 import { Effect, Policy, PolicyStatement } from 'aws-cdk-lib/aws-iam'
 import { Architecture, Runtime } from 'aws-cdk-lib/aws-lambda'
 import { NodejsFunction, NodejsFunctionProps } from 'aws-cdk-lib/aws-lambda-nodejs'
@@ -30,10 +30,6 @@ import { MiaIdentityProvider, MiaIdentityProviderApple, MiaIdentityProviderGoogl
  * Properties to create a cognito instance
  */
 export interface MiaUserManagementProps extends UserPoolProps {
-  /**
-   * Dynamodb table name of the table, where the users should be stored
-   */
-  dynamoDbTableName: string;
 }
 
 /**
@@ -101,8 +97,17 @@ export interface MiaAddIdentityProviderProps {
  * Response when adding an identity provider
  */
 export interface MiaAddIdentityProviderResponse {
+  /**
+   * UserPoolIdentityProviders that were be created.
+   */
   identityProviders: UserPoolIdentityProviderBase[];
+  /**
+   * UserPoolClient that was created.
+   */
   userPoolWebClient: UserPoolClient;
+  /**
+   * Created IdentityPool.
+   */
   identityPool: IdentityPool;
 }
 
@@ -110,6 +115,9 @@ export interface MiaAddIdentityProviderResponse {
  * Properties for adding a post confirmation lambda
  */
 export interface MiaAddPostConfirmationLambdaProps {
+  /**
+   * Optional NodejsFunction properties to create. If absent, best practices are used.
+   */
   lambda?: Partial<NodejsFunctionProps>;
 }
 
@@ -120,13 +128,27 @@ export class MiaUserManagement {
   readonly id: string
   readonly scope: Construct
   readonly userPool: UserPool
-  readonly dynamoDbTableName: string
+  readonly table: TableV2
   identityPool: IdentityPool | undefined
 
-  constructor(scope: Construct, id: string, props: MiaUserManagementProps) {
+  constructor(scope: Construct, id: string, props?: MiaUserManagementProps) {
     this.id = id
     this.scope = scope
-    this.dynamoDbTableName = props.dynamoDbTableName
+    this.table = new TableV2(this.scope, `${id}Table`, {
+      removalPolicy: RemovalPolicy.RETAIN,
+      partitionKey: {
+        type: AttributeType.STRING,
+        name: 'sub',
+      },
+      sortKey: {
+        type: AttributeType.STRING,
+        name: 'type',
+      },
+      billing: Billing.onDemand(),
+      deletionProtection: true,
+      encryption: TableEncryptionV2.dynamoOwnedKey(),
+      timeToLiveAttribute: 'ttl',
+    })
     this.userPool = new UserPool(scope, `${id}UserPool`, {
       signInCaseSensitive: false,
       signInAliases: {
@@ -376,7 +398,7 @@ export class MiaUserManagement {
         description: `Cognito post confirmation lambda for ${this.id} ${id}`,
         memorySize: 128,
         environment: {
-          DATA_TABLE_NAME: this.dynamoDbTableName,
+          DATA_TABLE_NAME: this.table.tableName,
         },
         entry: path.join(__dirname, './lambda/triggers/postConfirmation.ts'),
         logRetention: RetentionDays.TWO_WEEKS,
@@ -400,12 +422,7 @@ export class MiaUserManagement {
         ],
       }),
     )
-    const table = TableV2.fromTableName(
-      this.scope,
-      `${this.id}${id}PostConfirmationLambdaTable`,
-      this.dynamoDbTableName,
-    )
-    table.grantReadWriteData(postConfirmationLambda)
+    this.table.grantReadWriteData(postConfirmationLambda)
     this.userPool.addTrigger(
       UserPoolOperation.POST_CONFIRMATION,
       postConfirmationLambda,

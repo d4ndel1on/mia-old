@@ -7,7 +7,7 @@ import { marshallObject } from './utils/marshallObject'
 
 const dynamoDb = new DynamoDBClient()
 
-export class ProfileService {
+export class MiaProfileService {
   private readonly logger: Logger = new Logger({ serviceName: 'ProfileService' })
   private readonly tableName = getMandatoryEnv('DATA_TABLE_NAME')
 

@@ -1,7 +1,7 @@
 import { PostConfirmationTriggerEvent } from 'aws-lambda'
-import { ProfileService } from '../ProfileService'
+import { MiaProfileService } from '../MiaProfileService'
 
-const profileService = new ProfileService()
+const profileService = new MiaProfileService()
 
 export const handler = async (event: PostConfirmationTriggerEvent): Promise<PostConfirmationTriggerEvent> => {
   await profileService.createProfile({

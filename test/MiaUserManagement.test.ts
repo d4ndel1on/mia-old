@@ -9,9 +9,7 @@ void describe('MiaUserManagement', async () => {
   test('default', () => {
     const app = new App()
     const stack = new Stack(app, 'TestStack')
-    const userManagement = new MiaUserManagement(stack, 'MiaUserManagement', {
-      dynamoDbTableName: 'tableName',
-    })
+    const userManagement = new MiaUserManagement(stack, 'MiaUserManagement')
     userManagement.addUserGroup('MyDefaultUserGroup', { groupName: 'default' })
     userManagement.addUserGroup('MyAdminUserGroup', { groupName: 'admin' })
     userManagement.addCustomDomain('MyCustomDomain', {
