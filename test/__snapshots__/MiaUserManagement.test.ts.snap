@@ -13,39 +13,39 @@ exports[`default 1`] = `
     },
   },
   "Outputs": {
-    "MiaUserManagementCognitoAppClientId": {
+    "MiaStackCognitoAppClientId": {
       "Export": {
-        "Name": "MiaUserManagementCognitoAppClient:Id",
+        "Name": "MiaStackCognitoAppClient:Id",
       },
       "Value": {
         "Ref": "UserPoolWebClientD5EC4BD0",
       },
     },
-    "MiaUserManagementCognitoIdentityPoolId": {
+    "MiaStackCognitoIdentityPoolId": {
       "Export": {
-        "Name": "MiaUserManagement:CognitoIdentityPool:Id",
+        "Name": "MiaStack:CognitoIdentityPool:Id",
       },
       "Value": {
         "Ref": "IdentityPoolEC8A1A0D",
       },
     },
-    "MiaUserManagementMiaUserManagementCognitoUserPool": {
+    "MiaStackMiaStackCognitoUserPool": {
       "Export": {
-        "Name": "MiaUserManagement:MiaUserManagement:CognitoUserPool:Id",
+        "Name": "MiaStack:MiaStack:CognitoUserPool:Id",
       },
       "Value": {
-        "Ref": "MiaUserManagementUserPool3A80F3DA",
+        "Ref": "MiaStackUserPool24641A2A",
       },
     },
-    "MiaUserManagementMyAdminUserGroupCognitoUserGroup": {
+    "MiaStackMyAdminUserGroupCognitoUserGroup": {
       "Export": {
-        "Name": "MiaUserManagement:MyAdminUserGroup:CognitoUserGroup:User:Name",
+        "Name": "MiaStack:MyAdminUserGroup:CognitoUserGroup:User:Name",
       },
       "Value": "admin",
     },
-    "MiaUserManagementMyCustomDomainAuthorizedRedirectUserPoolDomainUrl": {
+    "MiaStackMyCustomDomainAuthorizedRedirectUserPoolDomainUrl": {
       "Export": {
-        "Name": "MiaUserManagement:MyCustomDomain:AuthorizedRedirectUserPoolDomainUrl",
+        "Name": "MiaStack:MyCustomDomain:AuthorizedRedirectUserPoolDomainUrl",
       },
       "Value": {
         "Fn::Join": [
@@ -53,24 +53,24 @@ exports[`default 1`] = `
           [
             "https://",
             {
-              "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+              "Ref": "MiaStackUserPoolDomainMyCustomDomainCDCC9BBE",
             },
             "/oauth2/idpresponse",
           ],
         ],
       },
     },
-    "MiaUserManagementMyCustomDomainCognitoDomainHost": {
+    "MiaStackMyCustomDomainCognitoDomainHost": {
       "Export": {
-        "Name": "MiaUserManagement:MyCustomDomain:CognitoDomainHost",
+        "Name": "MiaStack:MyCustomDomain:CognitoDomainHost",
       },
       "Value": {
-        "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+        "Ref": "MiaStackUserPoolDomainMyCustomDomainCDCC9BBE",
       },
     },
-    "MiaUserManagementMyDefaultUserGroupCognitoUserGroup": {
+    "MiaStackMyDefaultUserGroupCognitoUserGroup": {
       "Export": {
-        "Name": "MiaUserManagement:MyDefaultUserGroup:CognitoUserGroup:User:Name",
+        "Name": "MiaStack:MyDefaultUserGroup:CognitoUserGroup:User:Name",
       },
       "Value": "default",
     },
@@ -102,6 +102,12 @@ exports[`default 1`] = `
           ],
         },
         "Runtime": "nodejs20.x",
+        "Tags": [
+          {
+            "Key": "StackName",
+            "Value": "MiaStack",
+          },
+        ],
         "Timeout": 120,
       },
       "Type": "AWS::Lambda::Function",
@@ -132,6 +138,12 @@ exports[`default 1`] = `
                 ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
               ],
             ],
+          },
+        ],
+        "Tags": [
+          {
+            "Key": "StackName",
+            "Value": "MiaStack",
           },
         ],
       },
@@ -203,7 +215,7 @@ exports[`default 1`] = `
                         {
                           "Ref": "AWS::AccountId",
                         },
-                        ":parameter/cdk/exports/TestStack/*",
+                        ":parameter/cdk/exports/MiaStack/*",
                       ],
                     ],
                   },
@@ -222,10 +234,10 @@ exports[`default 1`] = `
       "Properties": {
         "ReaderProps": {
           "imports": {
-            "/cdk/exports/TestStack/CertificateStackuseast1RefCert5C9FAEC1D9CE664E": "{{resolve:ssm:/cdk/exports/TestStack/CertificateStackuseast1RefCert5C9FAEC1D9CE664E}}",
-            "/cdk/exports/TestStack/CertificateStackuseast1RefZoneA5DE4B685102DAC0": "{{resolve:ssm:/cdk/exports/TestStack/CertificateStackuseast1RefZoneA5DE4B685102DAC0}}",
+            "/cdk/exports/MiaStack/CertificateStackuseast1RefCert5C9FAEC1D9CE664E": "{{resolve:ssm:/cdk/exports/MiaStack/CertificateStackuseast1RefCert5C9FAEC1D9CE664E}}",
+            "/cdk/exports/MiaStack/CertificateStackuseast1RefZoneA5DE4B685102DAC0": "{{resolve:ssm:/cdk/exports/MiaStack/CertificateStackuseast1RefZoneA5DE4B685102DAC0}}",
           },
-          "prefix": "TestStack",
+          "prefix": "MiaStack",
           "region": "eu-west-1",
         },
         "ServiceToken": {
@@ -240,8 +252,8 @@ exports[`default 1`] = `
     },
     "IdentityPoolAuthenticatedRole42131CF5": {
       "DependsOn": [
-        "MiaUserManagementUserPoolPostConfirmationCognito64E7E6DD",
-        "MiaUserManagementUserPool3A80F3DA",
+        "MiaStackUserPoolPostConfirmationCognito74C1D21B",
+        "MiaStackUserPool24641A2A",
         "UserPoolWebClientD5EC4BD0",
       ],
       "Properties": {
@@ -281,13 +293,19 @@ exports[`default 1`] = `
             ],
           ],
         },
+        "Tags": [
+          {
+            "Key": "StackName",
+            "Value": "MiaStack",
+          },
+        ],
       },
       "Type": "AWS::IAM::Role",
     },
     "IdentityPoolDefaultRoleAttachmentD81AFC39": {
       "DependsOn": [
-        "MiaUserManagementUserPoolPostConfirmationCognito64E7E6DD",
-        "MiaUserManagementUserPool3A80F3DA",
+        "MiaStackUserPoolPostConfirmationCognito74C1D21B",
+        "MiaStackUserPool24641A2A",
         "UserPoolWebClientD5EC4BD0",
       ],
       "Properties": {
@@ -313,8 +331,8 @@ exports[`default 1`] = `
     },
     "IdentityPoolEC8A1A0D": {
       "DependsOn": [
-        "MiaUserManagementUserPoolPostConfirmationCognito64E7E6DD",
-        "MiaUserManagementUserPool3A80F3DA",
+        "MiaStackUserPoolPostConfirmationCognito74C1D21B",
+        "MiaStackUserPool24641A2A",
         "UserPoolWebClientD5EC4BD0",
       ],
       "Properties": {
@@ -334,7 +352,7 @@ exports[`default 1`] = `
                   },
                   "/",
                   {
-                    "Ref": "MiaUserManagementUserPool3A80F3DA",
+                    "Ref": "MiaStackUserPool24641A2A",
                   },
                 ],
               ],
@@ -347,8 +365,8 @@ exports[`default 1`] = `
     },
     "IdentityPoolUnauthenticatedRole68AEFF8B": {
       "DependsOn": [
-        "MiaUserManagementUserPoolPostConfirmationCognito64E7E6DD",
-        "MiaUserManagementUserPool3A80F3DA",
+        "MiaStackUserPoolPostConfirmationCognito74C1D21B",
+        "MiaStackUserPool24641A2A",
         "UserPoolWebClientD5EC4BD0",
       ],
       "Properties": {
@@ -388,6 +406,12 @@ exports[`default 1`] = `
             ],
           ],
         },
+        "Tags": [
+          {
+            "Key": "StackName",
+            "Value": "MiaStack",
+          },
+        ],
       },
       "Type": "AWS::IAM::Role",
     },
@@ -411,6 +435,12 @@ exports[`default 1`] = `
           ],
         },
         "Runtime": "nodejs20.x",
+        "Tags": [
+          {
+            "Key": "StackName",
+            "Value": "MiaStack",
+          },
+        ],
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -443,6 +473,12 @@ exports[`default 1`] = `
             ],
           },
         ],
+        "Tags": [
+          {
+            "Key": "StackName",
+            "Value": "MiaStack",
+          },
+        ],
       },
       "Type": "AWS::IAM::Role",
     },
@@ -470,27 +506,27 @@ exports[`default 1`] = `
       },
       "Type": "AWS::IAM::Policy",
     },
-    "MiaUserManagementGroupUserMyAdminUserGroup": {
+    "MiaStackGroupUserMyAdminUserGroup": {
       "Properties": {
-        "Description": "MiaUserManagement user group admin",
+        "Description": "MiaStack user group admin",
         "GroupName": "admin",
         "UserPoolId": {
-          "Ref": "MiaUserManagementUserPool3A80F3DA",
+          "Ref": "MiaStackUserPool24641A2A",
         },
       },
       "Type": "AWS::Cognito::UserPoolGroup",
     },
-    "MiaUserManagementGroupUserMyDefaultUserGroup": {
+    "MiaStackGroupUserMyDefaultUserGroup": {
       "Properties": {
-        "Description": "MiaUserManagement user group default",
+        "Description": "MiaStack user group default",
         "GroupName": "default",
         "UserPoolId": {
-          "Ref": "MiaUserManagementUserPool3A80F3DA",
+          "Ref": "MiaStackUserPool24641A2A",
         },
       },
       "Type": "AWS::Cognito::UserPoolGroup",
     },
-    "MiaUserManagementPostConfirmationLambdaInlinePolicyCCBBCF22": {
+    "MiaStackPostConfirmationLambdaInlinePolicy2CE0A817": {
       "Properties": {
         "PolicyDocument": {
           "Statement": [
@@ -521,19 +557,19 @@ exports[`default 1`] = `
           ],
           "Version": "2012-10-17",
         },
-        "PolicyName": "MiaUserManagementPostConfirmationLambdaInlinePolicyCCBBCF22",
+        "PolicyName": "MiaStackPostConfirmationLambdaInlinePolicy2CE0A817",
         "Roles": [
           {
-            "Ref": "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleA8BF2D11",
+            "Ref": "MiaStackPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleFA359935",
           },
         ],
       },
       "Type": "AWS::IAM::Policy",
     },
-    "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaF6BD2FC8": {
+    "MiaStackPostConfirmationLambdaMyPostConfirmationLambda7E976957": {
       "DependsOn": [
-        "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleDefaultPolicy37EA8AFA",
-        "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleA8BF2D11",
+        "MiaStackPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleDefaultPolicyD76B2124",
+        "MiaStackPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleFA359935",
       ],
       "Properties": {
         "Architectures": [
@@ -545,11 +581,11 @@ exports[`default 1`] = `
           },
           "S3Key": "136223b085a237d39d93fab44a04ac93174ebdc562086f6d26f6982e8c272bbc.zip",
         },
-        "Description": "Cognito post confirmation lambda for MiaUserManagement MyPostConfirmationLambda",
+        "Description": "Cognito post confirmation lambda for MiaStack MyPostConfirmationLambda",
         "Environment": {
           "Variables": {
             "DATA_TABLE_NAME": {
-              "Ref": "MiaUserManagementTable305F31C8",
+              "Ref": "MiaStackTableC0724FF5",
             },
           },
         },
@@ -557,16 +593,22 @@ exports[`default 1`] = `
         "MemorySize": 128,
         "Role": {
           "Fn::GetAtt": [
-            "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleA8BF2D11",
+            "MiaStackPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleFA359935",
             "Arn",
           ],
         },
         "Runtime": "nodejs20.x",
+        "Tags": [
+          {
+            "Key": "StackName",
+            "Value": "MiaStack",
+          },
+        ],
         "Timeout": 5,
       },
       "Type": "AWS::Lambda::Function",
     },
-    "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaLogRetention84D5F846": {
+    "MiaStackPostConfirmationLambdaMyPostConfirmationLambdaLogRetention4C2E30D8": {
       "Properties": {
         "LogGroupName": {
           "Fn::Join": [
@@ -574,7 +616,7 @@ exports[`default 1`] = `
             [
               "/aws/lambda/",
               {
-                "Ref": "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaF6BD2FC8",
+                "Ref": "MiaStackPostConfirmationLambdaMyPostConfirmationLambda7E976957",
               },
             ],
           ],
@@ -589,7 +631,46 @@ exports[`default 1`] = `
       },
       "Type": "Custom::LogRetention",
     },
-    "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleA8BF2D11": {
+    "MiaStackPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleDefaultPolicyD76B2124": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem",
+                "dynamodb:DeleteItem",
+                "dynamodb:DescribeTable",
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::GetAtt": [
+                  "MiaStackTableC0724FF5",
+                  "Arn",
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "MiaStackPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleDefaultPolicyD76B2124",
+        "Roles": [
+          {
+            "Ref": "MiaStackPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleFA359935",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "MiaStackPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleFA359935": {
       "Properties": {
         "AssumeRolePolicyDocument": {
           "Statement": [
@@ -617,49 +698,16 @@ exports[`default 1`] = `
             ],
           },
         ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleDefaultPolicy37EA8AFA": {
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": [
-                "dynamodb:BatchGetItem",
-                "dynamodb:GetRecords",
-                "dynamodb:GetShardIterator",
-                "dynamodb:Query",
-                "dynamodb:GetItem",
-                "dynamodb:Scan",
-                "dynamodb:ConditionCheckItem",
-                "dynamodb:BatchWriteItem",
-                "dynamodb:PutItem",
-                "dynamodb:UpdateItem",
-                "dynamodb:DeleteItem",
-                "dynamodb:DescribeTable",
-              ],
-              "Effect": "Allow",
-              "Resource": {
-                "Fn::GetAtt": [
-                  "MiaUserManagementTable305F31C8",
-                  "Arn",
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleDefaultPolicy37EA8AFA",
-        "Roles": [
+        "Tags": [
           {
-            "Ref": "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaServiceRoleA8BF2D11",
+            "Key": "StackName",
+            "Value": "MiaStack",
           },
         ],
       },
-      "Type": "AWS::IAM::Policy",
+      "Type": "AWS::IAM::Role",
     },
-    "MiaUserManagementTable305F31C8": {
+    "MiaStackTableC0724FF5": {
       "DeletionPolicy": "Retain",
       "Properties": {
         "AttributeDefinitions": [
@@ -700,7 +748,7 @@ exports[`default 1`] = `
       "Type": "AWS::DynamoDB::GlobalTable",
       "UpdateReplacePolicy": "Retain",
     },
-    "MiaUserManagementUserPool3A80F3DA": {
+    "MiaStackUserPool24641A2A": {
       "DeletionPolicy": "Retain",
       "Properties": {
         "AccountRecoverySetting": {
@@ -726,7 +774,7 @@ exports[`default 1`] = `
         "LambdaConfig": {
           "PostConfirmation": {
             "Fn::GetAtt": [
-              "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaF6BD2FC8",
+              "MiaStackPostConfirmationLambdaMyPostConfirmationLambda7E976957",
               "Arn",
             ],
           },
@@ -767,6 +815,9 @@ exports[`default 1`] = `
           },
         ],
         "SmsVerificationMessage": "The verification code to your new account is {####}",
+        "UserPoolTags": {
+          "StackName": "MiaStack",
+        },
         "UsernameAttributes": [
           "email",
         ],
@@ -783,12 +834,12 @@ exports[`default 1`] = `
       "Type": "AWS::Cognito::UserPool",
       "UpdateReplacePolicy": "Retain",
     },
-    "MiaUserManagementUserPoolDomainARecordMyCustomDomainE0C09ABE": {
+    "MiaStackUserPoolDomainARecordMyCustomDomain54B85FEB": {
       "Properties": {
         "AliasTarget": {
           "DNSName": {
             "Fn::GetAtt": [
-              "MiaUserManagementUserPoolDomainMyCustomDomainCloudFrontDomainName41730878",
+              "MiaStackUserPoolDomainMyCustomDomainCloudFrontDomainNameA51F5719",
               "DomainDescription.CloudFrontDistribution",
             ],
           },
@@ -805,7 +856,7 @@ exports[`default 1`] = `
         "HostedZoneId": {
           "Fn::GetAtt": [
             "ExportsReader8B249524",
-            "/cdk/exports/TestStack/CertificateStackuseast1RefZoneA5DE4B685102DAC0",
+            "/cdk/exports/MiaStack/CertificateStackuseast1RefZoneA5DE4B685102DAC0",
           ],
         },
         "Name": "auth.h0pe.example.",
@@ -813,27 +864,27 @@ exports[`default 1`] = `
       },
       "Type": "AWS::Route53::RecordSet",
     },
-    "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A": {
+    "MiaStackUserPoolDomainMyCustomDomainCDCC9BBE": {
       "Properties": {
         "CustomDomainConfig": {
           "CertificateArn": {
             "Fn::GetAtt": [
               "ExportsReader8B249524",
-              "/cdk/exports/TestStack/CertificateStackuseast1RefCert5C9FAEC1D9CE664E",
+              "/cdk/exports/MiaStack/CertificateStackuseast1RefCert5C9FAEC1D9CE664E",
             ],
           },
         },
         "Domain": "auth.h0pe.example",
         "UserPoolId": {
-          "Ref": "MiaUserManagementUserPool3A80F3DA",
+          "Ref": "MiaStackUserPool24641A2A",
         },
       },
       "Type": "AWS::Cognito::UserPoolDomain",
     },
-    "MiaUserManagementUserPoolDomainMyCustomDomainCloudFrontDomainName41730878": {
+    "MiaStackUserPoolDomainMyCustomDomainCloudFrontDomainNameA51F5719": {
       "DeletionPolicy": "Delete",
       "DependsOn": [
-        "MiaUserManagementUserPoolDomainMyCustomDomainCloudFrontDomainNameCustomResourcePolicy6A12FBB1",
+        "MiaStackUserPoolDomainMyCustomDomainCloudFrontDomainNameCustomResourcePolicyBC9D4CD1",
       ],
       "Properties": {
         "Create": {
@@ -842,11 +893,11 @@ exports[`default 1`] = `
             [
               "{"service":"CognitoIdentityServiceProvider","action":"describeUserPoolDomain","parameters":{"Domain":"",
               {
-                "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+                "Ref": "MiaStackUserPoolDomainMyCustomDomainCDCC9BBE",
               },
               ""},"physicalResourceId":{"id":"",
               {
-                "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+                "Ref": "MiaStackUserPoolDomainMyCustomDomainCDCC9BBE",
               },
               ""}}",
             ],
@@ -865,11 +916,11 @@ exports[`default 1`] = `
             [
               "{"service":"CognitoIdentityServiceProvider","action":"describeUserPoolDomain","parameters":{"Domain":"",
               {
-                "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+                "Ref": "MiaStackUserPoolDomainMyCustomDomainCDCC9BBE",
               },
               ""},"physicalResourceId":{"id":"",
               {
-                "Ref": "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A",
+                "Ref": "MiaStackUserPoolDomainMyCustomDomainCDCC9BBE",
               },
               ""}}",
             ],
@@ -879,7 +930,7 @@ exports[`default 1`] = `
       "Type": "Custom::UserPoolCloudFrontDomainName",
       "UpdateReplacePolicy": "Delete",
     },
-    "MiaUserManagementUserPoolDomainMyCustomDomainCloudFrontDomainNameCustomResourcePolicy6A12FBB1": {
+    "MiaStackUserPoolDomainMyCustomDomainCloudFrontDomainNameCustomResourcePolicyBC9D4CD1": {
       "Properties": {
         "PolicyDocument": {
           "Statement": [
@@ -891,7 +942,7 @@ exports[`default 1`] = `
           ],
           "Version": "2012-10-17",
         },
-        "PolicyName": "MiaUserManagementUserPoolDomainMyCustomDomainCloudFrontDomainNameCustomResourcePolicy6A12FBB1",
+        "PolicyName": "MiaStackUserPoolDomainMyCustomDomainCloudFrontDomainNameCustomResourcePolicyBC9D4CD1",
         "Roles": [
           {
             "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
@@ -900,7 +951,7 @@ exports[`default 1`] = `
       },
       "Type": "AWS::IAM::Policy",
     },
-    "MiaUserManagementUserPoolIdentityProviderApple70BE015F": {
+    "MiaStackUserPoolIdentityProviderApple511861EE": {
       "Properties": {
         "AttributeMapping": {
           "email": "email",
@@ -916,12 +967,12 @@ exports[`default 1`] = `
         "ProviderName": "SignInWithApple",
         "ProviderType": "SignInWithApple",
         "UserPoolId": {
-          "Ref": "MiaUserManagementUserPool3A80F3DA",
+          "Ref": "MiaStackUserPool24641A2A",
         },
       },
       "Type": "AWS::Cognito::UserPoolIdentityProvider",
     },
-    "MiaUserManagementUserPoolIdentityProviderGoogleBD96DB48": {
+    "MiaStackUserPoolIdentityProviderGoogle50B1A75F": {
       "Properties": {
         "AttributeMapping": {
           "email": "email",
@@ -936,24 +987,24 @@ exports[`default 1`] = `
         "ProviderName": "Google",
         "ProviderType": "Google",
         "UserPoolId": {
-          "Ref": "MiaUserManagementUserPool3A80F3DA",
+          "Ref": "MiaStackUserPool24641A2A",
         },
       },
       "Type": "AWS::Cognito::UserPoolIdentityProvider",
     },
-    "MiaUserManagementUserPoolPostConfirmationCognito64E7E6DD": {
+    "MiaStackUserPoolPostConfirmationCognito74C1D21B": {
       "Properties": {
         "Action": "lambda:InvokeFunction",
         "FunctionName": {
           "Fn::GetAtt": [
-            "MiaUserManagementPostConfirmationLambdaMyPostConfirmationLambdaF6BD2FC8",
+            "MiaStackPostConfirmationLambdaMyPostConfirmationLambda7E976957",
             "Arn",
           ],
         },
         "Principal": "cognito-idp.amazonaws.com",
         "SourceArn": {
           "Fn::GetAtt": [
-            "MiaUserManagementUserPool3A80F3DA",
+            "MiaStackUserPool24641A2A",
             "Arn",
           ],
         },
@@ -962,8 +1013,8 @@ exports[`default 1`] = `
     },
     "UserPoolWebClientD5EC4BD0": {
       "DependsOn": [
-        "MiaUserManagementUserPoolIdentityProviderApple70BE015F",
-        "MiaUserManagementUserPoolIdentityProviderGoogleBD96DB48",
+        "MiaStackUserPoolIdentityProviderApple511861EE",
+        "MiaStackUserPoolIdentityProviderGoogle50B1A75F",
       ],
       "Properties": {
         "AccessTokenValidity": 60,
@@ -997,7 +1048,7 @@ exports[`default 1`] = `
           "IdToken": "minutes",
         },
         "UserPoolId": {
-          "Ref": "MiaUserManagementUserPool3A80F3DA",
+          "Ref": "MiaStackUserPool24641A2A",
         },
       },
       "Type": "AWS::Cognito::UserPoolClient",

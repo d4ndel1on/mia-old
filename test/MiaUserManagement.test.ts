@@ -1,9 +1,9 @@
 import { describe } from 'node:test'
-import { App, Stack } from 'aws-cdk-lib'
+import { App } from 'aws-cdk-lib'
 import { Template } from 'aws-cdk-lib/assertions'
 import { HostedZone } from 'aws-cdk-lib/aws-route53'
 import { MiaCertificateStack } from '../src/MiaCertificateStack'
-import { MiaUserManagement } from '../src/MiaUserManagement'
+import { MiaStack } from '../src/MiaStack'
 import { MiaIdentityProvider } from '../src/utils/MiaIdentityProvider'
 import { MiaSecretString } from '../src/utils/MiaSecretString'
 
@@ -27,13 +27,13 @@ void describe('MiaUserManagement', async () => {
       },
       crossRegionReferences: true,
     })
-    const stack = new Stack(app, 'TestStack', {
+    const miaStack = new MiaStack(app, 'MiaStack', {
       crossRegionReferences: true,
       env: {
         region: 'eu-west-1',
       },
     })
-    const userManagement = new MiaUserManagement(stack, 'MiaUserManagement')
+    const { userManagement } = miaStack
     userManagement.addUserGroup('MyDefaultUserGroup', { groupName: 'default' })
     userManagement.addUserGroup('MyAdminUserGroup', { groupName: 'admin' })
     userManagement.addCustomDomain('MyCustomDomain', {
@@ -61,7 +61,7 @@ void describe('MiaUserManagement', async () => {
       ],
     })
     userManagement.addPostConfirmationLambda('MyPostConfirmationLambda')
-    const template = Template.fromStack(stack)
+    const template = Template.fromStack(miaStack)
     expect(template.toJSON()).toMatchSnapshot()
   })
 })
