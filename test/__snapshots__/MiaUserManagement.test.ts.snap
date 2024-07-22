@@ -11,128 +11,6 @@ exports[`default 1`] = `
         "zoneId": "Z3RFFRIM2A3IF5",
       },
     },
-    "LatestNodeRuntimeMap": {
-      "af-south-1": {
-        "value": "nodejs20.x",
-      },
-      "ap-east-1": {
-        "value": "nodejs20.x",
-      },
-      "ap-northeast-1": {
-        "value": "nodejs20.x",
-      },
-      "ap-northeast-2": {
-        "value": "nodejs20.x",
-      },
-      "ap-northeast-3": {
-        "value": "nodejs20.x",
-      },
-      "ap-south-1": {
-        "value": "nodejs20.x",
-      },
-      "ap-south-2": {
-        "value": "nodejs20.x",
-      },
-      "ap-southeast-1": {
-        "value": "nodejs20.x",
-      },
-      "ap-southeast-2": {
-        "value": "nodejs20.x",
-      },
-      "ap-southeast-3": {
-        "value": "nodejs20.x",
-      },
-      "ap-southeast-4": {
-        "value": "nodejs20.x",
-      },
-      "ap-southeast-5": {
-        "value": "nodejs20.x",
-      },
-      "ap-southeast-7": {
-        "value": "nodejs20.x",
-      },
-      "ca-central-1": {
-        "value": "nodejs20.x",
-      },
-      "ca-west-1": {
-        "value": "nodejs20.x",
-      },
-      "cn-north-1": {
-        "value": "nodejs18.x",
-      },
-      "cn-northwest-1": {
-        "value": "nodejs18.x",
-      },
-      "eu-central-1": {
-        "value": "nodejs20.x",
-      },
-      "eu-central-2": {
-        "value": "nodejs20.x",
-      },
-      "eu-isoe-west-1": {
-        "value": "nodejs18.x",
-      },
-      "eu-north-1": {
-        "value": "nodejs20.x",
-      },
-      "eu-south-1": {
-        "value": "nodejs20.x",
-      },
-      "eu-south-2": {
-        "value": "nodejs20.x",
-      },
-      "eu-west-1": {
-        "value": "nodejs20.x",
-      },
-      "eu-west-2": {
-        "value": "nodejs20.x",
-      },
-      "eu-west-3": {
-        "value": "nodejs20.x",
-      },
-      "il-central-1": {
-        "value": "nodejs20.x",
-      },
-      "me-central-1": {
-        "value": "nodejs20.x",
-      },
-      "me-south-1": {
-        "value": "nodejs20.x",
-      },
-      "mx-central-1": {
-        "value": "nodejs20.x",
-      },
-      "sa-east-1": {
-        "value": "nodejs20.x",
-      },
-      "us-east-1": {
-        "value": "nodejs20.x",
-      },
-      "us-east-2": {
-        "value": "nodejs20.x",
-      },
-      "us-gov-east-1": {
-        "value": "nodejs18.x",
-      },
-      "us-gov-west-1": {
-        "value": "nodejs18.x",
-      },
-      "us-iso-east-1": {
-        "value": "nodejs18.x",
-      },
-      "us-iso-west-1": {
-        "value": "nodejs18.x",
-      },
-      "us-isob-east-1": {
-        "value": "nodejs18.x",
-      },
-      "us-west-1": {
-        "value": "nodejs20.x",
-      },
-      "us-west-2": {
-        "value": "nodejs20.x",
-      },
-    },
   },
   "Outputs": {
     "MiaUserManagementCognitoAppClientId": {
@@ -212,7 +90,7 @@ exports[`default 1`] = `
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-eu-west-1",
           },
           "S3Key": "97f30e67419a1676a2215492723e5add1aa491caf0cbe2dd878fc4fab0468cd4.zip",
         },
@@ -223,15 +101,7 @@ exports[`default 1`] = `
             "Arn",
           ],
         },
-        "Runtime": {
-          "Fn::FindInMap": [
-            "LatestNodeRuntimeMap",
-            {
-              "Ref": "AWS::Region",
-            },
-            "value",
-          ],
-        },
+        "Runtime": "nodejs20.x",
         "Timeout": 120,
       },
       "Type": "AWS::Lambda::Function",
@@ -266,6 +136,107 @@ exports[`default 1`] = `
         ],
       },
       "Type": "AWS::IAM::Role",
+    },
+    "CustomCrossRegionExportReaderCustomResourceProviderHandler46647B68": {
+      "DependsOn": [
+        "CustomCrossRegionExportReaderCustomResourceProviderRole10531BBD",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-eu-west-1",
+          },
+          "S3Key": "8acca95a9957d02a9f3ec124c9869c5d5b70a7fb3e332120850781ecc9363037.zip",
+        },
+        "Handler": "__entrypoint__.handler",
+        "MemorySize": 128,
+        "Role": {
+          "Fn::GetAtt": [
+            "CustomCrossRegionExportReaderCustomResourceProviderRole10531BBD",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomCrossRegionExportReaderCustomResourceProviderRole10531BBD": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Sub": "arn:\${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          },
+        ],
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": [
+                    "ssm:AddTagsToResource",
+                    "ssm:RemoveTagsFromResource",
+                    "ssm:GetParameters",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      "",
+                      [
+                        "arn:",
+                        {
+                          "Ref": "AWS::Partition",
+                        },
+                        ":ssm:eu-west-1:",
+                        {
+                          "Ref": "AWS::AccountId",
+                        },
+                        ":parameter/cdk/exports/TestStack/*",
+                      ],
+                    ],
+                  },
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "Inline",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "ExportsReader8B249524": {
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "ReaderProps": {
+          "imports": {
+            "/cdk/exports/TestStack/CertificateStackuseast1RefCert5C9FAEC1D9CE664E": "{{resolve:ssm:/cdk/exports/TestStack/CertificateStackuseast1RefCert5C9FAEC1D9CE664E}}",
+            "/cdk/exports/TestStack/CertificateStackuseast1RefZoneA5DE4B685102DAC0": "{{resolve:ssm:/cdk/exports/TestStack/CertificateStackuseast1RefZoneA5DE4B685102DAC0}}",
+          },
+          "prefix": "TestStack",
+          "region": "eu-west-1",
+        },
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "CustomCrossRegionExportReaderCustomResourceProviderHandler46647B68",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::CrossRegionExportReader",
+      "UpdateReplacePolicy": "Delete",
     },
     "IdentityPoolAuthenticatedRole42131CF5": {
       "DependsOn": [
@@ -357,11 +328,7 @@ exports[`default 1`] = `
               "Fn::Join": [
                 "",
                 [
-                  "cognito-idp.",
-                  {
-                    "Ref": "AWS::Region",
-                  },
-                  ".",
+                  "cognito-idp.eu-west-1.",
                   {
                     "Ref": "AWS::URLSuffix",
                   },
@@ -432,7 +399,7 @@ exports[`default 1`] = `
       "Properties": {
         "Code": {
           "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-eu-west-1",
           },
           "S3Key": "4e26bf2d0a26f2097fb2b261f22bb51e3f6b4b52635777b1e54edbd8e2d58c35.zip",
         },
@@ -443,15 +410,7 @@ exports[`default 1`] = `
             "Arn",
           ],
         },
-        "Runtime": {
-          "Fn::FindInMap": [
-            "LatestNodeRuntimeMap",
-            {
-              "Ref": "AWS::Region",
-            },
-            "value",
-          ],
-        },
+        "Runtime": "nodejs20.x",
         "Timeout": 900,
       },
       "Type": "AWS::Lambda::Function",
@@ -546,11 +505,7 @@ exports[`default 1`] = `
                     {
                       "Ref": "AWS::Partition",
                     },
-                    ":cognito-identity:",
-                    {
-                      "Ref": "AWS::Region",
-                    },
-                    ":",
+                    ":cognito-identity:eu-west-1:",
                     {
                       "Ref": "AWS::AccountId",
                     },
@@ -586,7 +541,7 @@ exports[`default 1`] = `
         ],
         "Code": {
           "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-eu-west-1",
           },
           "S3Key": "136223b085a237d39d93fab44a04ac93174ebdc562086f6d26f6982e8c272bbc.zip",
         },
@@ -731,9 +686,7 @@ exports[`default 1`] = `
         "Replicas": [
           {
             "DeletionProtectionEnabled": true,
-            "Region": {
-              "Ref": "AWS::Region",
-            },
+            "Region": "eu-west-1",
           },
         ],
         "SSESpecification": {
@@ -849,8 +802,13 @@ exports[`default 1`] = `
             ],
           },
         },
-        "HostedZoneId": "my-hosted-zone-id",
-        "Name": "auth.mia.h0pe.example.",
+        "HostedZoneId": {
+          "Fn::GetAtt": [
+            "ExportsReader8B249524",
+            "/cdk/exports/TestStack/CertificateStackuseast1RefZoneA5DE4B685102DAC0",
+          ],
+        },
+        "Name": "auth.h0pe.example.",
         "Type": "A",
       },
       "Type": "AWS::Route53::RecordSet",
@@ -858,9 +816,14 @@ exports[`default 1`] = `
     "MiaUserManagementUserPoolDomainMyCustomDomain2823E50A": {
       "Properties": {
         "CustomDomainConfig": {
-          "CertificateArn": "arn:certificate:1",
+          "CertificateArn": {
+            "Fn::GetAtt": [
+              "ExportsReader8B249524",
+              "/cdk/exports/TestStack/CertificateStackuseast1RefCert5C9FAEC1D9CE664E",
+            ],
+          },
         },
-        "Domain": "auth.mia.h0pe.example",
+        "Domain": "auth.h0pe.example",
         "UserPoolId": {
           "Ref": "MiaUserManagementUserPool3A80F3DA",
         },

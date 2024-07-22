@@ -1,22 +1,46 @@
 import { describe } from 'node:test'
 import { App, Stack } from 'aws-cdk-lib'
 import { Template } from 'aws-cdk-lib/assertions'
+import { HostedZone } from 'aws-cdk-lib/aws-route53'
+import { MiaCertificateStack } from '../src/MiaCertificateStack'
 import { MiaUserManagement } from '../src/MiaUserManagement'
 import { MiaIdentityProvider } from '../src/utils/MiaIdentityProvider'
 import { MiaSecretString } from '../src/utils/MiaSecretString'
 
 void describe('MiaUserManagement', async () => {
+  const hostedZoneLookup = jest.spyOn(HostedZone, 'fromLookup')
+
+  beforeEach(() => {
+    hostedZoneLookup.mockImplementation((scope, id, props) => new HostedZone(scope, id, {
+      zoneName: props.domainName,
+    }))
+  })
+  afterEach(() => hostedZoneLookup.mockRestore())
+
   test('default', () => {
     const app = new App()
-    const stack = new Stack(app, 'TestStack')
+    const certificateStack = new MiaCertificateStack(app, 'CertificateStack', {
+      domain: 'h0pe.example',
+      cnames: ['auth'],
+      env: {
+        region: 'us-east-1',
+      },
+      crossRegionReferences: true,
+    })
+    const stack = new Stack(app, 'TestStack', {
+      crossRegionReferences: true,
+      env: {
+        region: 'eu-west-1',
+      },
+    })
     const userManagement = new MiaUserManagement(stack, 'MiaUserManagement')
     userManagement.addUserGroup('MyDefaultUserGroup', { groupName: 'default' })
     userManagement.addUserGroup('MyAdminUserGroup', { groupName: 'admin' })
     userManagement.addCustomDomain('MyCustomDomain', {
       cname: 'auth',
-      certificateArn: 'arn:certificate:1',
-      domainName: 'mia.h0pe.example',
-      hostedZoneId: 'my-hosted-zone-id',
+      domainName: certificateStack.zone.zoneName,
+      certificateArn: certificateStack.certificate.certificateArn,
+      hostedZoneId: certificateStack.zone.hostedZoneId,
     })
     userManagement.addIdentityProviders({
       providers: [
