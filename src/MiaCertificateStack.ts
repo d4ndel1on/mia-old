@@ -13,19 +13,21 @@ export interface MiaCertificateStackProps extends StackProps {
    */
   domain: string;
   /**
-   * Cname for the domains, that the certificate should serve
+   * Cname for the domain that the certificate should serve
    */
-  cnames: Array<string>;
+  cname: string;
 }
 
 export class MiaCertificateStack extends MiaTaggedStack {
   readonly certificate: Certificate
   readonly zone: IHostedZone
+  readonly cname: string
 
   constructor(scope: Construct, id: string, props: MiaCertificateStackProps) {
     super(scope, id, props)
 
-    const { domain, cnames } = props
+    const { domain, cname } = props
+    this.cname = cname
 
     if (this.region !== 'us-east-1') {
       throw new Error(
@@ -34,14 +36,10 @@ export class MiaCertificateStack extends MiaTaggedStack {
       )
     }
 
-    if (!cnames || !cnames.length) {
-      throw new Error('No cnames provided')
-    }
-
     this.zone = PublicHostedZone.fromLookup(this, 'Zone', { domainName: domain })
     this.certificate = new Certificate(this, 'Cert', {
-      domainName: `*.${cnames[0]}.${domain}`,
-      subjectAlternativeNames: cnames.flatMap(c => [`${c}.${domain}`, `*.${c}.${domain}`]),
+      domainName: `${cname}.${domain}`,
+      subjectAlternativeNames: [`*.${cname}.${domain}`],
       validation: CertificateValidation.fromDns(this.zone),
     })
   }

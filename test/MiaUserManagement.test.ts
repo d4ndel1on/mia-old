@@ -21,7 +21,7 @@ void describe('MiaUserManagement', async () => {
     const app = new App()
     const certificateStack = new MiaCertificateStack(app, 'CertificateStack', {
       domain: 'h0pe.example',
-      cnames: ['auth'],
+      cname: 'auth',
       env: {
         region: 'us-east-1',
       },

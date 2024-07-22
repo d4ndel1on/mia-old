@@ -13,7 +13,10 @@ export class MiaStack extends MiaTaggedStack {
   readonly userManagement: MiaUserManagement
 
   constructor(scope: Construct, id: string, props: MiaStackProps) {
-    super(scope, id, props)
+    super(scope, id, {
+      ...props,
+      crossRegionReferences: props.crossRegionReferences ? true : props.env?.region !== 'us-east-1',
+    })
 
     this.userManagement = new MiaUserManagement(this, id, props)
   }
