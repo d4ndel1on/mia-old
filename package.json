@@ -64,11 +64,11 @@
     "constructs": "^10.0.5"
   },
   "dependencies": {
-    "@aws-cdk/aws-cognito-identitypool-alpha": "^2.161.0-alpha.0",
+    "@aws-cdk/aws-cognito-identitypool-alpha": "^2.161.1-alpha.0",
     "@aws-lambda-powertools/logger": "^2.8.0",
-    "@aws-sdk/client-cognito-identity-provider": "^3.664.0",
-    "@aws-sdk/client-dynamodb": "^3.664.0",
-    "@aws-sdk/util-dynamodb": "^3.664.0",
+    "@aws-sdk/client-cognito-identity-provider": "^3.665.0",
+    "@aws-sdk/client-dynamodb": "^3.665.0",
+    "@aws-sdk/util-dynamodb": "^3.665.0",
     "aws-lambda": "^1.0.7",
     "esbuild": "^0.24.0"
   },
