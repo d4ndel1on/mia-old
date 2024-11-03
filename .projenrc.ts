@@ -37,6 +37,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '@aws-sdk/client-dynamodb',
     '@aws-sdk/client-cognito-identity-provider',
   ],
+  depsUpgradeOptions: {
+    workflow: false,
+  },
 })
 project.eslint?.addRules({
   '@typescript-eslint/no-floating-promises': 'error',
